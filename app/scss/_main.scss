@@ -1,0 +1,179 @@
+.main-box {
+
+    @include breakpoint-up(large) {
+        display: flex;
+        padding: 0 10.375rem;
+        align-items: center;
+    }
+    
+    text-align: center;
+    padding: 5rem 1.5rem;
+    height: 100%;
+
+    .flex-text {
+
+        @include breakpoint-up(large) {
+            flex: 1;
+            padding-right: 3.125rem;
+            text-align: left;
+
+            h1 {
+                font-size: 50px;
+            }
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 30px;
+            line-height: 1.3;
+        }
+    }
+
+    .flex-interactive {
+
+        @include breakpoint-up(large) {
+            flex: 1;
+            margin-left: 0.9375rem;
+        }
+
+        .flex-try {
+
+            @include breakpoint-up(large) {
+                width: 540px;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            text-align: center;
+            background-color: $blue;
+            padding-top: 26px;
+            padding-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: rgba(0,0,0, 0.2) 0px 8px 1px;
+            margin-bottom: 24px;
+
+            b {
+                font-weight: $font-xl;
+            }
+        }
+
+        .flex-form {
+
+            @include breakpoint-up(large) {
+                width: 540px;
+            } 
+
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: rgba(0,0,0, 0.2) 0px 8px 1px;
+
+            em {
+                display: none;
+            }
+
+            .visible {
+                display: block;
+                text-align: right;
+                color: $red;
+                font-size: 13px;
+                font-weight: $font-md;
+                padding: 10px 0 0 0;
+            }
+
+            .input {
+
+                @include breakpoint-up(large) {
+                    padding-left: 2rem;
+                } 
+
+                border: 1px solid $grayishBlue;
+                border-radius: 5px;
+                width: 100%;
+                height: 3.375rem;
+                padding-left: 1.25rem;
+                text-align: left;
+                display: flex;
+                align-items: center;
+
+                input {
+                    border: none;
+                    flex: 3;
+                    font-weight: $font-lg;
+                    font-family: inherit;
+                    width: 80%;
+                }
+
+                .error-icon {
+                    flex: 1;
+                    height: max-content;
+                    padding-right: 2rem;
+                    text-align: right;
+                    display: none;
+
+                    .icon {
+                        padding: 50% 0;
+
+                        img {
+
+                            @include breakpoint-up(medium) {
+                                padding-top: 5%;
+                            }
+
+                            margin: auto;
+                            padding-top: 30%;
+                        }
+                    }
+                }
+
+                &:not(:first-child) {
+                    margin-top: 1.25rem;
+                }
+    
+                &:last-child {
+                    margin-bottom: 1.375rem;
+                }
+    
+                &:focus-within {
+                    border-color: $darkBlue;
+                }
+            }
+
+            &-text {
+                color: $grayishBlue;
+                font-size: 0.75rem;
+                padding-bottom: 0.3125rem;
+                padding-top: 1rem;
+                margin: 0;
+                font-weight: $font-md;
+                width: 100%;
+                text-align: center;
+                line-height: inherit;
+
+                &-link {
+                    color: $red;
+                    text-decoration: none;
+                    font-weight: $font-xl;
+                }
+            }
+
+            .error {
+                border-color: $red;
+                margin: 0;
+
+                .error-icon {
+                    display: inline;
+                }
+
+                input {
+                    color: $red;
+                }
+            }
+        }
+    }
+}
+
