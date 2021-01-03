@@ -1,37 +1,23 @@
 const submitButton = document.querySelector('#submitButton');
 
-submitButton.addEventListener('click', function() {
-    const firstName = document.querySelector('#firstName');
-    const lastName = document.querySelector('#lastName');
-    const email = document.querySelector('#email');
-    const password = document.querySelector('#password');
-
-    if(firstName.firstChild.nextSibling.value == "") {
-        firstName.classList.add("error");
-        document.querySelector('#nameErrorMessage').classList.add("visible");
+function validateEmptyData($inputName) {
+    const input = document.querySelector($inputName);
+    const error = document.querySelector($inputName+"ErrorMessage");
+    var $validation = input.firstChild.nextSibling.value == "";
+    if($validation) {
+        input.classList.add("error");
+        error.classList.add("visible");
     } else {
-        const nameError = document.querySelector('#nameErrorMessage');
-        if(nameError.classList.contains("visible")) {
-            nameError.classList.remove("visible");
+        if(error.classList.contains("visible")) {
+            error.remove("visible");
         }
-        if(firstName.classList.contains("error")) {
-            firstName.classList.remove("error");
+        if(input.classList.contains("visible")) {
+            input.classList.remove("visible");
         }
     }
+}
 
-    if(lastName.firstChild.nextSibling.value == "") {
-        lastName.classList.add("error");
-        document.querySelector('#lastNameErrorMessage').classList.add("visible");
-    } else {
-        const lastNameError = document.querySelector('#lastNameErrorMessage')
-        if(lastNameError.classList.contains("visible")) {
-            lastNameError.classList.remove("visible");
-        }
-        if(lastName.classList.contains("error")) {
-            lastName.classList.remove("error");
-        }
-    }
-
+function validateEmail() {
     var regEx =  	
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     var correctEmail = regEx.test(email.firstChild.nextSibling.value);
@@ -52,17 +38,11 @@ submitButton.addEventListener('click', function() {
             email.classList.remove("error");
         }
     }
+}
 
-    if(password.firstChild.nextSibling.value == "") {
-        password.classList.add("error");
-        document.querySelector('#passwordErrorMessage').classList.add("visible");
-    } else {
-        const passwordError = document.querySelector('#passwordErrorMessage');
-        if(passwordError.classList.contains("visible")) {
-            passwordError.classList.remove("visible");
-        }
-        if(password.classList.contains("error")) {
-            password.classList.remove("error");
-        }
-    }
+submitButton.addEventListener('click', function() {
+    validateEmptyData("#firstName");
+    validateEmptyData("#lastName");
+    validateEmail();
+    validateEmptyData("#password");    
 })
